@@ -1,0 +1,10 @@
+{% extends "dh5bp/base.html" %}
+
+{% block content %}
+    <h2>Cards</h2>
+    <ul>
+        {% for card in object_list %}
+            <li><a href = "{% url 'card-detail' card.id%}">{{ card }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

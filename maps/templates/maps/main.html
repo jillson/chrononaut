@@ -1,0 +1,39 @@
+{% extends 'dh5bp/base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+{% block title %}Chrononaut Adventures{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/main.css" %}">
+<link rel="stylesheet" href="{% static "css/leaflet.css" %}">
+{% endblock %}
+{% block content %}
+<div class="row" id="header" style="width: 1024px">
+<h4>Welcome to Chrononauts.  Please select your next adventure</h4>
+</div>
+<div class="row" id="map" style="width: 800px; height: 500px"></div>
+ 
+    <script src="{% static "js/leaflet.js"%}"></script>
+
+    <script>
+      var map = L.map('map').setView([-67, -35], 2);
+        L.tileLayer('{% static "maps/imgs/1600_map"%}/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 6,
+            attribution: 'by anonymous Portuguese (1502) - Biblioteca Estense Universitaria, Modena, Italy',
+            tms: true
+      }).addTo(map);
+
+      map.on('click', function(e) {
+      //debug so we can pick points
+      console.log(e.latlng);
+      });
+
+      var adventures = [{"name":"Vasco De Gama","state":"new","lat":"-47.26","lng":"-58.53","id":1,"description":"Vasco De Gama set sail from Portugal in search of a route to the Indies around Africa.  The first part of his voyage was to the Cape of Good Hope","link":"<a href=\"/travel/\">Set sail</a>"},
+      {"name":"Columbus","state":"completed","lat":"-49","lng":"-56","id":2,"description":"Columbus sailed for Spain in search of a shorter route to the Indies; instead he found islands off what we now call America","link":"<a href=\"/travel/\">Set sail</a>"},
+      {"name":"Ponce De Leon","state":"locked","lat":"-24.2","lng":"-156.5","id":3},
+      {"name":"Cape of New Hope","state":"danger","lat":"-81.15","lng":"-7.5","id":4,"description": "From the Cape of Good Hope, Portuguese sailors continued around Africa to the Indies and beyond","link":"<a href=\"/travel/\">Set sail</a>"}];
+      var baseIconURL = "{% static "maps/imgs/"%}";
+      
+    </script>
+    <script src="{% static "maps/js/map.js"%}"></script>
+{% endblock %}

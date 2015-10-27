@@ -1,0 +1,3 @@
+https://en.wikipedia.org/wiki/Age_of_Discovery#/media/File:Cantino_planisphere_%281502%29.jpg : Public Domain : "<a href="https://commons.wikimedia.org/wiki/File:Cantino_planisphere_(1502).jpg#/media/File:Cantino_planisphere_(1502).jpg">Cantino planisphere (1502)</a>" by anonymous Portuguese (1502) - Biblioteca Estense Universitaria, Modena, Italy. Licensed under Public Domain via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.
+
+(Maps converted using http://build-failed.blogspot.com/2012/11/zoomable-image-with-leaflet.html)

@@ -1,0 +1,21 @@
+Make homepage have unlockable links to various adventures
+Merge travel into adventures
+Have adventures link to travel
+Have travel link to arrival
+Add some narrative text
+Make travel (and flashcards in general) semi-transparent
+Put leaflet map underneath with Indy path effect
+Extend flashcard API to prsent a filterable random getter
+Find other todo's in code
+
+
+
+Make inventory nullable
+Add base combat view that makes api calls
+Add combat api to setup a battle
+Add javascript/css to draw pc/npcs
+Add javascript/css to draw battle card
+Add javascript to update battle
+
+
+Check if there's a way to make HP Max default to HP --> best is that you can override save, which is probably not worth it...
