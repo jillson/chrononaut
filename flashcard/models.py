@@ -10,7 +10,7 @@ class CardGenerator(models.Model):
     def __unicode__(self):
         return self.Name
     def get_json(self):
-        dd = dsl.build_vars(self.Formula)
+        dd = flashcard.dsl.build_vars(self.Formula)
         question = self.Question % dd
         return { "level": self.Level,
                  "question": question,
