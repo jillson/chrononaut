@@ -26,7 +26,11 @@ DATABASES = {
 
 
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+h = dj_database_url.config()
+if (h):
+    DATABASES['default'] =  h
+    
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
