@@ -19,7 +19,8 @@ def unload_fixture(apps, schema_editor):
     
 class Migration(migrations.Migration):
 
-    dependencies = [
+    dependencies = [ ('flashcard', '0001_cardgenerator'),
+
     ]
 
     operations = [ migrations.RunPython(load_fixture, reverse_code=unload_fixture)
