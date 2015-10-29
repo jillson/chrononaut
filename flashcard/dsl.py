@@ -59,7 +59,10 @@ def parse(tokens,mydd):
             return float(s)
     def eval_expr(z, list):
         'float, [((float, float -> float), float)] -> float'
+        #Note: this is no longer legal in python 3
         return reduce(lambda s, (f, x): f(s, x), list, z)
+        #return reduce(lambda s_f_x: s_f_x[1][0](s_f_x[0],s_f_x[1][1]), list, z)
+        
     eval = unarg(eval_expr)
 
     # Primitives
