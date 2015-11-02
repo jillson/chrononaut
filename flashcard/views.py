@@ -1,7 +1,10 @@
+import random
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.generic import View
 from django.views.generic.detail import DetailView
 from .models import CardGenerator
+
 
 class JSONResponseMixin(object):
     """
@@ -34,4 +37,13 @@ class CardGeneratorJSONView(JSONDetailView):
     #    context['now'] = timezone.now()
     #    return context
 
-# Create your views here.
+
+class CardGeneratorSingleView(View):
+    def get(self, request, *args, **kwargs):
+        print "Debug",args,kwargs
+        #TODO: add optional parameters to select by level etc.
+        cgs = CardGenerator.objects.all()
+        cg = random.choice(cgs)
+        return JsonResponse(cg.get_json())
+
+
