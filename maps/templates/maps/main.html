@@ -15,9 +15,9 @@
     <script src="{% static "js/leaflet.js"%}"></script>
 
     <script>
-      var map = L.map('map').setView([-67, -35], 2);
+      var map = L.map('map').setView([-77, -66], 2);
         L.tileLayer('{% static "maps/imgs/1600_map"%}/{z}/{x}/{y}.png', {
-            minZoom: 1,
+            minZoom: 2,
             maxZoom: 4,
             attribution: 'by anonymous Portuguese (1502) - Biblioteca Estense Universitaria, Modena, Italy',
             tms: true
@@ -28,10 +28,10 @@
       console.log(e.latlng);
       });
 
-      var adventures = [{"name":"Vasco De Gama","state":"new","lat":"-47.26","lng":"-58.53","id":1,"description":"Vasco De Gama set sail from Portugal in search of a route to the Indies around Africa.  The first part of his voyage was to the Cape of Good Hope","link":"<a href=\"/travel/\">Set sail</a>"},
-      {"name":"Columbus","state":"completed","lat":"-49","lng":"-56","id":2,"description":"Columbus sailed for Spain in search of a shorter route to the Indies; instead he found islands off what we now call America","link":"<a href=\"/travel/\">Set sail</a>"},
-      {"name":"Ponce De Leon","state":"locked","lat":"-24.2","lng":"-156.5","id":3},
-      {"name":"Cape of New Hope","state":"danger","lat":"-81.15","lng":"-7.5","id":4,"description": "From the Cape of Good Hope, Portuguese sailors continued around Africa to the Indies and beyond","link":"<a href=\"/travel/\">Set sail</a>"}];
+      var adventures = [{"name":"Vasco De Gama","state":"new","lat":"-71.05","lng":"-100.9","id":1,"description":"Vasco De Gama set sail from Portugal in search of a route to the Indies around Africa.  The first part of his voyage was to the Cape of Good Hope","link":"<a href=\"/travel/\">Set sail</a>"},
+      {"name":"Columbus","state":"completed","lat":"-71.7","lng":"-97.9","id":2,"description":"Columbus sailed for Spain in search of a shorter route to the Indies; instead he found islands off what we now call America","link":"<a href=\"/travel/\">Set sail</a>"},
+      {"name":"Ponce De Leon","state":"locked","lat":"-70.6","lng":"-172.8","id":3},
+      {"name":"Cape of New Hope","state":"danger","lat":"-83.15","lng":"-63.3","id":4,"description": "From the Cape of Good Hope, Portuguese sailors continued around Africa to the Indies and beyond","link":"<a href=\"/travel/\">Set sail</a>"}];
       var baseIconURL = "{% static "maps/imgs/"%}";
       
     </script>
