@@ -21,7 +21,7 @@ function shuffle(array) {
 }
 //TODO: add stuff to the function
 function get_card(cb) {
-    var flashcardURL = "/flashcard/1"; //TODO: implement /flashcard/random?filters
+
     $.getJSON( flashcardURL, {
         filter: "any",
 	format: "json"
