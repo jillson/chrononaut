@@ -47,7 +47,7 @@ function fcard_callback(data)
 	$("#answer"+(i+1)+"> p").text(a);
     }
     $("#mainCard>p").text(data.question);
-    $("#mainCard>p").textfit('bestfit');
+    //$("#mainCard>p").textfit('bestfit');
 }
 
 function correctAnswer(event)
