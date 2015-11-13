@@ -1,5 +1,4 @@
 {% extends 'dh5bp/base.html' %}
-{% load url from future %}
 {% load staticfiles %}
 {% block title %}Travel{% endblock %}
 {% block head %}
@@ -38,6 +37,7 @@
   var distance = 600;
   var flashcardURL = "{% url 'single-card'%}";
 </script>
+<script src="{% static "js/jquery.textfit.min.js" %}"></script>
 <script src="{% static "js/flashcard.js" %}"></script>
 <script src="{% static "js/travel.js" %}"></script>
 

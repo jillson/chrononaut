@@ -41,7 +41,9 @@ div {
 
 .big-card p {
   text-align: center;
-  font: 220px Georgia, Times New Roman, serif;
+  font: 100px Georgia, Times New Roman, serif;
+  //width: 600px;
+  //height: 800px;
 }
 
 .card:hover {
