@@ -89,8 +89,23 @@ function correctAnswer(event)
 	while (tgt.hp <= 0) {
 	    	tgt = badguys[Math.floor(Math.random() * badguys.length)];
 	}
-	tgt.hp -= who.dmg;
-	if (tgt.hp < 0) tgt.hp = 0;
+	console.log("tgt is " + tgt);
+	var whoImg = $("#"+who.id);
+	var tgtImg = $("#"+tgt.id);
+	console.log("tgtImg is " + tgtImg);
+	var deltaX = tgtImg[0].offsetLeft - whoImg[0].offsetLeft;
+	var deltaY = tgtImg[0].offsetRight - whoImg[0].offsetRight;
+	
+	whoImg.animate({
+	    left: "+=" + (deltaX),
+	    top: "+=" + (deltaY)
+	}, 200, function() {
+	    tgt.hp -= who.dmg;
+	    if (tgt.hp < 0) tgt.hp = 0;
+	    whoImg.animate({
+		left: "-=" + (deltaX),
+		top: "-=" + (deltaY)}, 200, finishTurn);
+	});
     }
     else if (who.class == "healer")
     {
@@ -114,7 +129,11 @@ function correctAnswer(event)
 	    }
 	}
     }
+    finishTurn();
+}
 
+function finishTurn()
+{
     if (checkWin())
     {
 	finishCombat();
