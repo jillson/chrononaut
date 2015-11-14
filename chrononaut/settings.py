@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'travel',
     'maps',
     'combat',
+    'adventure',
 )
 
 MIDDLEWARE_CLASSES = (

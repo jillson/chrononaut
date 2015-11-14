@@ -1,0 +1,82 @@
+[{
+    "fields" : {
+	"Name":"Vasco De Gama",
+	"Lat":"-71.05",
+	"Lng":"-100.9",
+	"Description": "Vasco De Gama set sail from Portugal in search of a route to the Indies around Africa.  The first part of his voyage was to the Cape of Good Hope",
+	"UnlockTrigger": null
+    },
+    "model": "adventure.adventure",
+    "pk": 1
+},
+{
+    "fields" : {
+	"Name":"Columbus",
+	"Lat":"-71.7",
+	"Lng":"-97.9",
+	"Description":"Columbus sailed for Spain in search of a shorter route to the Indies; instead he found islands off what we now call America",
+	"UnlockTrigger": 1
+    },
+    "model": "adventure.adventure",
+    "pk": 2
+},
+{
+    "fields" : {
+	"Name":"Ponce De Leon",
+	"Lat":"-70.6",
+	"Lng":"-172.8",
+	"UnlockTrigger": 2,
+	"Description":"After Columbus, many adventures searched the New World for Fame, Fortune, and Glory.  Ponce de Leon found Florida"
+    },
+    "model": "adventure.adventure",
+    "pk": 3
+},
+{
+    "fields" : {
+	"Name":"Cape of New Hope",
+	"Lat":"-83.15",
+	"Lng":"-63.3",
+	"Description": "From the Cape of Good Hope, Portuguese sailors continued around Africa to the Indies and beyond",
+	"UnlockTrigger": 1
+    },
+    "model": "adventure.adventure",
+    "pk": 4
+},  
+{
+  "fields": {
+    "Value": "locked"
+  },
+  "model": "adventure.unlockstatus",
+  "pk": 1
+},
+{
+  "fields": {
+    "Value": "new"
+  },
+  "model": "adventure.unlockstatus",
+  "pk": 2
+},
+{
+  "fields": {
+    "Value": "completed"
+  },
+  "model": "adventure.unlockstatus",
+  "pk": 3
+},
+{
+  "fields": {
+    "Value": "danger"
+  },
+  "model": "adventure.unlockstatus",
+  "pk": 4
+},
+{
+  "fields": {
+    "Player": 1,
+    "State": 2,
+    "Adventure": 1
+  },
+  "model": "adventure.adventureinstance",
+  "pk": 1
+}
+]
