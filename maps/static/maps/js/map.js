@@ -11,7 +11,7 @@ function Adventure(adv)
     this.lng = adv.lng;
     this.state = adv.state;
     this.description = adv.description;
-    this.link = adv.link;
+    this.link = '<a href="'+ adv.link + '">Set Sail</a>';
     this.marker = L.marker([adv.lat,adv.lng],{icon: iconStore[adv.state]});
     
     if (adv.state != "locked")
