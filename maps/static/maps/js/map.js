@@ -1,6 +1,7 @@
 var iconStore = {"new": L.icon({iconUrl: baseIconURL + "greendot.png"}),
 		 "completed": L.icon({iconUrl:baseIconURL + "bluedot.png"}),
 		 "locked": L.icon({iconUrl:baseIconURL + "greydot.png"}),
+		 "inprogress": L.icon({iconUrl:baseIconURL + "halfdot.png"}),
 		 "danger": L.icon({iconUrl:baseIconURL + "alarm.gif"})}
 
 function Adventure(adv)
@@ -11,7 +12,14 @@ function Adventure(adv)
     this.lng = adv.lng;
     this.state = adv.state;
     this.description = adv.description;
-    this.link = '<a href="'+ adv.link + '">Set Sail</a>';
+    if (this.state == "inprogress")
+    {
+	this.link = '<a href="'+ adv.link + '">Continue</a>';
+    }
+    else
+    {
+	this.link = '<a href="'+ adv.link + '">Set Sail</a>';
+    }
     this.marker = L.marker([adv.lat,adv.lng],{icon: iconStore[adv.state]});
     
     if (adv.state != "locked")

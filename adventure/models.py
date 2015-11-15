@@ -9,10 +9,14 @@ class Adventure(models.Model):
     Lng = models.CharField(default="-30",max_length=20)
     Distance = models.IntegerField(default=1000)
     UnlockTrigger = models.ForeignKey("Adventure",null=True,blank=True)
+    def __unicode__(self):
+        return self.Name
 
 
 class UnlockStatus(models.Model):
     Value = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.Value
 
 class AdventureInstance(models.Model):
     Adventure = models.ForeignKey(Adventure)
@@ -22,12 +26,16 @@ class AdventureInstance(models.Model):
         return unicode(self.Adventure) + " for " + unicode(self.Player)
     def get_json(self):
         a = self.Adventure
+        if self.State.Value == "inprogress":
+            stateBasedLink = "combat"
+        else:
+            stateBasedLink = "travel"
         return {"name": str(a.Name),
                 "state": str(self.State.Value),
                 "lat": str(a.Lat),
                 "lng": str(a.Lng),
                 "id": a.id,
                 "description": str(a.Description),
-                "link": str(reverse("travel",args=[a.id]))}
+                "link": str(reverse(stateBasedLink,args=[a.id]))}
 
 

@@ -72,6 +72,13 @@
 },
 {
   "fields": {
+    "Value": "inprogress"
+  },
+  "model": "adventure.unlockstatus",
+  "pk": 5
+},
+{
+  "fields": {
     "Player": 1,
     "State": 2,
     "Adventure": 1

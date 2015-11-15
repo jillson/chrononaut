@@ -87,7 +87,8 @@ function correctAnswer(event)
     {
 	var tgt = badguys[Math.floor(Math.random() * badguys.length)];
 	while (tgt.hp <= 0) {
-	    	tgt = badguys[Math.floor(Math.random() * badguys.length)];
+	    console.log("Trying to find a live target");
+	    tgt = badguys[Math.floor(Math.random() * badguys.length)];
 	}
 	console.log("tgt is " + tgt);
 	var whoImg = $("#"+who.id);
@@ -209,6 +210,7 @@ function checkWin()
 
 function nextUnit()
 {
+    console.log("Picking next unit");
     var cTeam;
     if (sideTurn == 0) { cTeam = goodguys; }
     else { cTeam = badguys; }
@@ -220,9 +222,11 @@ function nextUnit()
 	var next = cTeam[unitTurn];
 	if (next.hp > 0)
 	{
+	    console.log("Next up is " + unitTurn);
 	    return;
 	}
     }
+    console.log("Switching teams");
     unitTurn = 0;
     if (sideTurn == 0)
     {

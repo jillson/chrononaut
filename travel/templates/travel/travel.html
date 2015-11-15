@@ -27,18 +27,23 @@
 <div class="row">
   Score: <span id="score">0</span> <span id="message">&nbsp;</span>  
 </div>
-<div class="row">Distance remaining:<span id="distance">1000</span></div>
+<div class="row">Distance remaining:<span id="distance">{{object.Adventure.Distance}}</span></div>
 
 {% endblock %}
 
 {% block post_main_script %}
 <script>
   var score = 0;
-  var distance = 600;
+  var distance = {{object.Adventure.Distance}};
   var flashcardURL = "{% url 'single-card'%}";
 </script>
 <script src="{% static "js/jquery.textfit.min.js" %}"></script>
 <script src="{% static "js/flashcard.js" %}"></script>
 <script src="{% static "js/travel.js" %}"></script>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
 
 {% endblock %}
