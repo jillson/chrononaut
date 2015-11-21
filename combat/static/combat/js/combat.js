@@ -85,26 +85,26 @@ function correctAnswer(event)
     var who = goodguys[unitTurn];
     if (who.class == "fighter")
     {
+	var timeout = 10;
 	var tgt = badguys[Math.floor(Math.random() * badguys.length)];
-	while (tgt.hp <= 0) {
+	while (tgt.hp <= 0 && timeout > 0) {
 	    tgt = badguys[Math.floor(Math.random() * badguys.length)];
+	    timeout -= 1;
 	}
+	if (timeout <= 0 && tgt.hp <= 0)
+	{
+	    console.log("Huh?");
+	    finishTurn();
+	}
+	
 	var whoImg = $("#"+who.id);
 	var tgtImg = $("#"+tgt.id);
 	var deltaX = tgtImg[0].offsetLeft - whoImg[0].offsetLeft;
 	var deltaY = tgtImg[0].offsetRight - whoImg[0].offsetRight;
 	tgt.hp -= who.dmg;
 	if (tgt.hp < 0) tgt.hp = 0;
-	whoImg.animate({
-	    left: "+=" + (deltaX),
-	    top: "+=" + (deltaY)
-	}, 200, function() {
-
-	    whoImg.animate({
-		left: "-=" + (deltaX),
-		top: "-=" + (deltaY)}, 200, finishTurn);
-	});
-	return; //avoid finishing turn twice (eventually can remove when we add animations for rest)
+	whoImg.animate({left: "+=" + (deltaX),top: "+=" + (deltaY)},200).
+	    delay(15).addClass("flipped").animate({left: 0, top: 0}).removeClass("flipped").delay(1,finishTurn);
     }
     else if (who.class == "healer")
     {
@@ -116,6 +116,9 @@ function correctAnswer(event)
 		if (guy.hp > guy.maxhp) guy.hp = guy.maxhp;
 	    }
 	}
+	var whoImg = $("#"+who.id);
+	var deltaX = 30;
+	whoImg.animate({"left": 50},20).addClass("flipped").delay(250).animate({"left":0}).removeClass("flipped").delay(5,finishTurn);
     }
     else if (who.class == "wizard")
     {
@@ -127,8 +130,17 @@ function correctAnswer(event)
 		if (guy.hp < 0) guy.hp = 0;
 	    }
 	}
+		var whoImg = $("#"+who.id);
+	var deltaX = 30;
+	whoImg.animate({"left": 50},20).delay(250).animate({"left":0}).delay(5,finishTurn);
     }
-    finishTurn();
+    else
+    {
+	console.log("Don't have actions for class" + who.class);
+	finishTurn();
+    }
+    
+
 }
 
 function finishTurn()
