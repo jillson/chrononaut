@@ -87,26 +87,24 @@ function correctAnswer(event)
     {
 	var tgt = badguys[Math.floor(Math.random() * badguys.length)];
 	while (tgt.hp <= 0) {
-	    console.log("Trying to find a live target");
 	    tgt = badguys[Math.floor(Math.random() * badguys.length)];
 	}
-	console.log("tgt is " + tgt);
 	var whoImg = $("#"+who.id);
 	var tgtImg = $("#"+tgt.id);
-	console.log("tgtImg is " + tgtImg);
 	var deltaX = tgtImg[0].offsetLeft - whoImg[0].offsetLeft;
 	var deltaY = tgtImg[0].offsetRight - whoImg[0].offsetRight;
-	
+	tgt.hp -= who.dmg;
+	if (tgt.hp < 0) tgt.hp = 0;
 	whoImg.animate({
 	    left: "+=" + (deltaX),
 	    top: "+=" + (deltaY)
 	}, 200, function() {
-	    tgt.hp -= who.dmg;
-	    if (tgt.hp < 0) tgt.hp = 0;
+
 	    whoImg.animate({
 		left: "-=" + (deltaX),
 		top: "-=" + (deltaY)}, 200, finishTurn);
 	});
+	return; //avoid finishing turn twice (eventually can remove when we add animations for rest)
     }
     else if (who.class == "healer")
     {
@@ -140,18 +138,9 @@ function finishTurn()
 	finishCombat();
 	return;
     }
-
     nextUnit();
     setup();
     return;
-    
-    /*$("#myship").animate({
-	left: "+=50",
-    }, 200, function() {
-	setup();
-    });
-    */
-    
 }
 
 function wrongAnswer(event)
@@ -182,7 +171,6 @@ function wrongAnswer(event)
 	finishCombat();
 	return;
     }
-
     nextUnit();
     setup();
     return false;
@@ -210,7 +198,6 @@ function checkWin()
 
 function nextUnit()
 {
-    console.log("Picking next unit");
     var cTeam;
     if (sideTurn == 0) { cTeam = goodguys; }
     else { cTeam = badguys; }
@@ -222,11 +209,9 @@ function nextUnit()
 	var next = cTeam[unitTurn];
 	if (next.hp > 0)
 	{
-	    console.log("Next up is " + unitTurn);
 	    return;
 	}
     }
-    console.log("Switching teams");
     unitTurn = 0;
     if (sideTurn == 0)
     {
