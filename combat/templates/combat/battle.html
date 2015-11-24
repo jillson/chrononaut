@@ -66,10 +66,12 @@
 </div>
 
 <div class="row">
+  <form id="finishButton" action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Finish Combat" />
+</form>
   Score: <span id="score">0</span> <span id="message">&nbsp;</span>  
 </div>
-<div class="row">Distance remaining:<span id="distance">1000</span></div>
-
 {% endblock %}
 
 {% block post_main_script %}
@@ -94,6 +96,8 @@
 <script src="{% static "js/jquery.pulse.js"%}"></script>
 <script src="{% static "js/flashcard.js" %}"></script>
 <script src="{% static "combat/js/combat.js" %}"></script>
+
+
 
 {% endblock %}
 

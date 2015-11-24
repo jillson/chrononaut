@@ -11,15 +11,14 @@ function finishCombat()
 	$("#answer"+(i+1)).unbind("click").text("");
     }
 
-    //TODO: make this an interstitial that will save score before doing relocate
-    //TODO: also, make relocate use value from html so we can avoid hardcoding
-    window.location.replace("/");
+    $("#finishForm").show();
  
 }
 
 
 function setup()
 {
+    $("#finishForm").hide();
     $("#score").text(score);
     for (var i = 0; i < goodguys.length; i++)
     {

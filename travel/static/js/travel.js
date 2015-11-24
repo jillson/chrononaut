@@ -8,9 +8,7 @@ function finishTravel()
 	$("#answer"+(i+1)).unbind("click").text("");
     }
 
-    //TODO: make this an interstitial that will save score before doing relocate
-    //TODO: also, make relocate use value from html so we can avoid hardcoding
-    window.location.replace("/combat/");
+    $("#finishButton").show();
  
 }
 
@@ -54,8 +52,8 @@ function correctAnswer(event)
 {
     event.stopPropagation();
     $("#message").text("Correct!");
-    score += 50;
-    distance -= 50;
+    score += 100;
+    distance -= 100;
     if (distance <= 0)
     {
 	distance = 0;
@@ -79,5 +77,5 @@ function wrongAnswer(event)
 }
 
 
-
+$("#finishButton").hide();
 $(setup);
