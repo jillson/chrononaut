@@ -7,7 +7,7 @@ function finishTravel()
 	var a = answers[i];
 	$("#answer"+(i+1)).unbind("click").text("");
     }
-
+    $("#mainContainer").hide();
     $("#finishButton").show();
  
 }

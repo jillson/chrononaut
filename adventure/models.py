@@ -34,8 +34,8 @@ class AdventureInstance(models.Model):
                 "state": str(self.State.Value),
                 "lat": str(a.Lat),
                 "lng": str(a.Lng),
-                "id": a.id,
+                "id": self.id,
                 "description": str(a.Description),
-                "link": str(reverse(stateBasedLink,args=[a.id]))}
+                "link": str(reverse(stateBasedLink,args=[self.id]))}
 
 

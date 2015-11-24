@@ -5,73 +5,73 @@
 <link rel="stylesheet" href="{% static "css/main.css" %}">
 {% endblock %}
 {% block content %}
-
-<div class="row">
-  <table>
-    <tr>
-      <td width="20%">
-	<table>
-	  <tr>
-	    <td>
-	      <img src="{% static "combat/images/knight.png"%}" id="g1" style="position: relative; left: 10px;">
-	      <p id="g1_hp">20</p>
-	    </td>
-	  </tr>
-	  <tr>
-	    <td>
-	      <img src="{% static "combat/images/mage.png"%}" id="g2" style="position: relative; left: 10px;">
-	      <p id="g2_hp">20</p>
-	    </td>
-	  </tr>
-	  <tr>
-	    <td>
-	      <img src="{% static "combat/images/healer.png"%}" id="g3" style="position: relative; left: 10px;">
-	      <p id="g3_hp">20</p>
-	    </td>
-	  </tr>
-	</table>
-      </td>
-      <td width="50%" id="middleDiv" >
-	<div id="mainCard" class="big-card parent-vcenter"><p class="vcenter">&nbsp;</p></div>
-<div class="row">
-    <div id="answers" >
-      <div class="card parent-vcenter" id="answer1"><p class="vcenter">&nbsp;</p></div>
-      <div class="card parent-vcenter" id="answer2"><p class="vcenter">&nbsp;</p></div>
-      <div class="card parent-vcenter" id="answer3"><p class="vcenter">&nbsp;</p></div>
-      <div class="card parent-vcenter" id="answer4"><p class="vcenter">&nbsp;</p></div>
-    </div>
+<div id="mainContainer">
+  <div class="row">
+    <table>
+      <tr>
+	<td width="20%">
+	  <table>
+	    <tr>
+	      <td>
+		<img src="{% static "combat/images/knight.png"%}" id="g1" style="position: relative; left: 10px;">
+		<p id="g1_hp">20</p>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<img src="{% static "combat/images/mage.png"%}" id="g2" style="position: relative; left: 10px;">
+		<p id="g2_hp">20</p>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<img src="{% static "combat/images/healer.png"%}" id="g3" style="position: relative; left: 10px;">
+		<p id="g3_hp">20</p>
+	      </td>
+	    </tr>
+	  </table>
+	</td>
+	<td width="50%" id="middleDiv" >
+	  <div id="mainCard" class="big-card parent-vcenter"><p class="vcenter">&nbsp;</p></div>
+	  <div class="row">
+	    <div id="answers" >
+	      <div class="card parent-vcenter" id="answer1"><p class="vcenter">&nbsp;</p></div>
+	      <div class="card parent-vcenter" id="answer2"><p class="vcenter">&nbsp;</p></div>
+	      <div class="card parent-vcenter" id="answer3"><p class="vcenter">&nbsp;</p></div>
+	      <div class="card parent-vcenter" id="answer4"><p class="vcenter">&nbsp;</p></div>
+	    </div>
+	  </div>
+	  
+	</td>
+	<td width="20%" id="rightDiv">
+	  <div class="row">
+	    <img src="{% static "combat/images/thug.png"%}" id="b1" style="position: relative; left: 10px; transform: scaleX(-1);">
+	    <p id="b1_hp">20</p>
+	  </div>
+	  <div class="row">
+	    <img src="{% static "combat/images/thug.png"%}" id="b2" style="position: relative; left: 10px; transform: scaleX(-1);">
+	    <p id="b2_hp">20</p>
+	  </div>
+	  <div class="row">
+	    <img src="{% static "combat/images/thug.png"%}" id="b3" style="position: relative; left: 10px; transform: scaleX(-1);">
+	    <p id="b3_hp">20</p>
+	  </div>
+	  <div class="row">
+	    <img src="{% static "combat/images/thug.png"%}" id="b4" style="position: relative; left: 10px; transform: scaleX(-1);">
+	    <p id="b4_hp">20</p>
+	  </div>
+	</td>
+      </tr>
+    </table>
+  </div>
 </div>
-	
-      </td>
-      <td width="20%" id="rightDiv">
-	<div class="row">
-	  <img src="{% static "combat/images/thug.png"%}" id="b1" style="position: relative; left: 10px; transform: scaleX(-1);">
-	  <p id="b1_hp">20</p>
-	</div>
-	<div class="row">
-	  <img src="{% static "combat/images/thug.png"%}" id="b2" style="position: relative; left: 10px; transform: scaleX(-1);">
-	  <p id="b2_hp">20</p>
-	</div>
-	<div class="row">
-	  <img src="{% static "combat/images/thug.png"%}" id="b3" style="position: relative; left: 10px; transform: scaleX(-1);">
-	  <p id="b3_hp">20</p>
-	</div>
-	<div class="row">
-	  <img src="{% static "combat/images/thug.png"%}" id="b4" style="position: relative; left: 10px; transform: scaleX(-1);">
-	  <p id="b4_hp">20</p>
-	</div>
-      </td>
-    </tr>
-  </table>
-</div>
-
 <div class="row">
-  <form id="finishButton" action="" method="post">{% csrf_token %}
+  <form id="finishForm" action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Finish Combat" />
-</form>
+  </form>
   Score: <span id="score">0</span> <span id="message">&nbsp;</span>  
-</div>
+  </div>
 {% endblock %}
 
 {% block post_main_script %}

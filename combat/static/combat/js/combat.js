@@ -10,7 +10,7 @@ function finishCombat()
 	var a = answers[i];
 	$("#answer"+(i+1)).unbind("click").text("");
     }
-
+    $("#mainContainer").hide();
     $("#finishForm").show();
  
 }
@@ -18,7 +18,6 @@ function finishCombat()
 
 function setup()
 {
-    $("#finishForm").hide();
     $("#score").text(score);
     for (var i = 0; i < goodguys.length; i++)
     {
@@ -245,5 +244,5 @@ function nextUnit()
     console.log("Warning... something isn't right in Denmark");
 }
 
-
+$("#finishForm").hide();
 $(setup);
