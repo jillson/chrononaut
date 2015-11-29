@@ -16,7 +16,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -36,7 +35,7 @@ if (h):
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4!9s-3&p)7+_m_8q*9e5b8ryxcj5+^=t(@liwr4ci9zuvuuc8fdafadsh'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY",'4fdsas-3&p)7+_m_8q*9e5b8ryxcj5+^=t(@liwr4ci9zuvuuc8fdafadsh')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,10 +43,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-LOGIN_URL = '/admin'
+LOGIN_URL = '/login'
 LOGIN_EXEMPT_URLS = (
     r'^about/',
-    )
+    r'^login/',
+    r'^logout/',
+    r'^admin/',
+)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -62,6 +64,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
     'dh5bp',
     'core',
     'flashcard',
@@ -83,6 +86,22 @@ MIDDLEWARE_CLASSES = (
     'chrononaut.authmiddleware.LoginRequiredMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get("SOCIAL_AUTH_TWITTER_KEY")
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get("SOCIAL_AUTH_TWITTER_SECRET")
+
+if not SOCIAL_AUTH_TWITTER_KEY or not SOCIAL_AUTH_TWITTER_SECRET:
+    print "Warning... Twitter stuff not defined; you need to set them as environmental variables"
+
+
+    
 ROOT_URLCONF = 'chrononaut.urls'
 
 TEMPLATES = [
@@ -96,10 +115,24 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+    )
 
 WSGI_APPLICATION = 'chrononaut.wsgi.application'
 
