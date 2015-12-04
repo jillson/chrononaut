@@ -21,6 +21,11 @@ urlpatterns = [
     url(r'^flashcard/',include("flashcard.urls")),
     url(r'^combat/',include("combat.urls")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^login/$', 'app.views.home'),
+    url(r'^logout/$', 'app.views.logout'),
+    url(r'^done/$', 'app.views.done', name='done'),
+
+    
     url(r'', include('social.apps.django_app.urls', namespace='social')),
     url(r'', include("core.urls"))
 ]
