@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Python Social Auth</title>
+    <title>Please login using one of the available social authentication options</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,12 +20,12 @@
     </style>
   </head>
   <body>
-    <h1>Python Social Auth</h1>
+    <h1>Please login using one of the available login options</h1>
 
     <div class="buttons">
       {% if user.is_authenticated %}
         <div class="user-details">
-          You are logged in as <code>{{ user.username }}</code>!
+          You are logged in as <code>{{ user.username }}</code>!  You probably now want to go <a href="{% url 'home'%}"> back to the beginning </a>
         </div>
       {% endif %}
 
@@ -76,12 +76,6 @@
             </a>
           {% endif %}
         {% endfor %}
-
-        <a class="btn btn-info" name="ajax-login" href="#">
-          <i class="fa fa-refresh"></i>
-          Ajax
-        </a>
-      </div>
 
       <div>
         <a class="btn btn-primary" href="/logout/" id="logout">
@@ -211,74 +205,6 @@
       </form>
     </div>
 
-    <div id="ajax-login-modal" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Ajax Authentication by AccessToken</h4>
-          </div>
-
-          <div class="modal-body">
-            <form action="#" method="post" class="form-horizontal" role="form">{% csrf_token %}
-              <div class="form-group">
-                <label class="control-label" for="backend">Backend:</label>
-                <select class="form-control" name="backend">
-                  <option value=""></option>
-                  {% for name, backend in available_backends|oauth_backends %}
-                    <option value="{{ name }}">{{ backend|backend_name }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label" for="access_token">Access token:</label>
-                <input class="form-control" id="access_token" name="access_token" type="text" value="" placeholder="OAuth1 or OAuth2 access token">
-              </div>
-
-              <div class="form-group">
-                <label class="control-label" for="access_token_secret">Access token secret:</label>
-                <input class="form-control" id="access_token_secret" name="access_token_secret" type="text" value="" placeholder="OAuth1 access token secret">
-              </div>
-            </form>
-
-            <div class="login-result" style="display: none;">
-              <p><strong>User Id:</strong><span class="user-id"></span></p>
-              <p><strong>Username:</strong><span class="user-username"></span></p>
-              <p>This page will be reloaded in 10s and the user should be logged in.</p>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="persona-modal" class="modal fade">
-      <form action="{% url "social:complete" backend="persona" %}" method="post">{% csrf_token %}
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Mozilla Persona Authentication</h4>
-            </div>
-
-            <div class="modal-body">
-              <p>Login with Mozilla Persona by clicking the <code>Login</code> button below.</p>
-              <input type="hidden" name="assertion" value="" />
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Login</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
 
     {% if backend %}
       <div id="email-required-modal" class="modal fade">
