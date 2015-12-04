@@ -92,13 +92,11 @@ SOCIAL_AUTH_TWITTER_SECRET = os.environ.get("SOCIAL_AUTH_TWITTER_SECRET")
 if not SOCIAL_AUTH_TWITTER_KEY or not SOCIAL_AUTH_TWITTER_SECRET:
     print ("Warning... Twitter stuff not defined; you need to set them as environmental variables")
 
-# Go to https://console.developers.google.com/start to get google stuff
-"""Under APIs and Auth > Credentials, create a new Client ID.
-Make sure to specify the right callback URL: http://test1.com:8000/complete/google-oauth2/
-Copy the values into settings file:
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = """
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
+if not SOCIAL_AUTH_GOOGLE_OAUTH2_KEY or not SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET:
+    print ("Warning... Google stuff not defined; set them as environmental variables")
     
 
     
