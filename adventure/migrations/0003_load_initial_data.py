@@ -4,11 +4,15 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 from django.core.management import call_command
 
+from django.contrib.auth.models import User
 #http://stackoverflow.com/questions/25960850/loading-initial-data-with-django-1-7-and-data-migrations
 
 fixture = 'load_adventure'
 
 def load_fixture(apps, schema_editor):
+    primaryUser, created = User.objects.get_or_create(username="admin",password="admin",last_login="2015-11-24")
+    if created:
+        primaryUser.save()
     call_command('loaddata', fixture, app_label='adventure') 
 
 def unload_fixture(apps, schema_editor):
