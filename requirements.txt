@@ -1,7 +1,9 @@
+diff-match-patch==20121119
 dj-database-url==0.3.0
 dj-static==0.0.6
 Django==1.8.5
 django-html5-boilerplate==1.0.8
+django-import-export==0.4.0
 django-toolbelt==0.0.1
 funcparserlib==0.3.6
 gunicorn==19.3.0
@@ -14,3 +16,4 @@ requests==2.8.1
 requests-oauthlib==0.5.0
 six==1.10.0
 static3==0.6.1
+tablib==0.10.0

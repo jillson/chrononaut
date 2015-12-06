@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
     'social.apps.django_app.default',
     'dh5bp',
     'core',
