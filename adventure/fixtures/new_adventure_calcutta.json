@@ -1,1 +1,12 @@
-[{"id": 5, "Name": "Arrival at Calcutta", "Description": "From the Cape of Good Hope, Portuguese sailors continued around Africa to the Indies, opening a new era of trade", "Lat": "-78.67", "Lng": "-14.77", "Distance": 1000, "UnlockTrigger": 4}]
+[{
+    "fields" : {
+        "Name":"Arrival at Calcutta",
+        "Lat":"-78.67",
+        "Lng":"-14.77",
+        "Description": "From the Cape of Good Hope, de Gamma continued around Africa to the Indies, opening a new era of trading and exploration",
+        "UnlockTrigger": 4,
+	"Distance": 1000
+    },
+    "model": "adventure.adventure",
+    "pk": 5
+}]
