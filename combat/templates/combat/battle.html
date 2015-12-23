@@ -11,24 +11,14 @@
       <tr>
 	<td width="20%">
 	  <table>
+	    {% for gg in goodguys %}
 	    <tr>
 	      <td>
-		<img src="{% static "combat/images/knight.png"%}" id="g1" style="position: relative; left: 10px;">
-		<p id="g1_hp">20</p>
+		<img src="{% static "combat/images/"%}{{gg.image}}" id="g{{gg.id}}" style="position: relative; left: 10px;">
+		<p id="g{{gg.id}}_hp">20</p>
 	      </td>
 	    </tr>
-	    <tr>
-	      <td>
-		<img src="{% static "combat/images/mage.png"%}" id="g2" style="position: relative; left: 10px;">
-		<p id="g2_hp">20</p>
-	      </td>
-	    </tr>
-	    <tr>
-	      <td>
-		<img src="{% static "combat/images/healer.png"%}" id="g3" style="position: relative; left: 10px;">
-		<p id="g3_hp">20</p>
-	      </td>
-	    </tr>
+	    {% endfor %}
 	  </table>
 	</td>
 	<td width="50%" id="middleDiv" >
@@ -44,22 +34,12 @@
 	  
 	</td>
 	<td width="20%" id="rightDiv">
+	  {% for badguy in badguys %}
 	  <div class="row">
-	    <img src="{% static "combat/images/thug.png"%}" id="b1" style="position: relative; left: 10px; transform: scaleX(-1);">
-	    <p id="b1_hp">20</p>
+	    <img src="{% static "combat/images/thug.png"%}" id="b{{badguy.id}}" style="position: relative; left: 10px; transform: scaleX(-1);">
+	    <p id="b{{badguy.id}}_hp">{{badguy.hp}}</p>
 	  </div>
-	  <div class="row">
-	    <img src="{% static "combat/images/thug.png"%}" id="b2" style="position: relative; left: 10px; transform: scaleX(-1);">
-	    <p id="b2_hp">20</p>
-	  </div>
-	  <div class="row">
-	    <img src="{% static "combat/images/thug.png"%}" id="b3" style="position: relative; left: 10px; transform: scaleX(-1);">
-	    <p id="b3_hp">20</p>
-	  </div>
-	  <div class="row">
-	    <img src="{% static "combat/images/thug.png"%}" id="b4" style="position: relative; left: 10px; transform: scaleX(-1);">
-	    <p id="b4_hp">20</p>
-	  </div>
+	  {% endfor %}
 	</td>
       </tr>
     </table>
