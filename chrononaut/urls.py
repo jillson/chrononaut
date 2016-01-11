@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from core.views import HQView
 urlpatterns = [
     url(r'^travel/',include("travel.urls")),
     url(r'^flashcard/',include("flashcard.urls")),
@@ -24,8 +24,8 @@ urlpatterns = [
     url(r'^login/$', 'app.views.home'),
     url(r'^logout/$', 'app.views.logout'),
     url(r'^done/$', 'app.views.done', name='done'),
-
-    
+    url(r'^map/', include("maps.urls")),
+    url(r'^$', include("core.urls")),
     url(r'', include('social.apps.django_app.urls', namespace='social')),
-    url(r'', include("core.urls"))
+
 ]

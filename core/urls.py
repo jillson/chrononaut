@@ -5,9 +5,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 #from .views import LoginView
-from maps.views import MapMainView
+from .views import HQView
 
 urlpatterns = [
-    url(r'^$',MapMainView.as_view(template_name="maps/main.html"),name="home"),
-    url(r'^login/$',TemplateView.as_view(template_name="core/login.html"),name="login")
+    url(r'^$',HQView.as_view(),name="home"),
 ]

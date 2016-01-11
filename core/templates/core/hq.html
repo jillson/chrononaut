@@ -1,0 +1,9 @@
+{% extends "dh5bp/base.html" %}
+
+{% block content %}
+Greetings Chrononaut.  You have currently unlocked the following timelines:
+<ul>
+  {% for map in view.get_maps %}
+  <li><a href="{% url 'map' map.id%}">{{map.Name}}</a></li>
+  {% endfor %}
+{% endblock %}

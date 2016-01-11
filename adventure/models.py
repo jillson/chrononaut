@@ -9,6 +9,7 @@ class Adventure(models.Model):
     Lng = models.CharField(default="-30",max_length=20)
     Distance = models.IntegerField(default=1000)
     UnlockTrigger = models.ForeignKey("Adventure",null=True,blank=True)
+    Map = models.ForeignKey("maps.Map",null=False)
     def __unicode__(self):
         return self.Name
 

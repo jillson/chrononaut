@@ -5,10 +5,19 @@ from django.views.generic.base import TemplateView
 from .models import Player, State, ItemType, Item, ItemInstance
 
 from combat.models import BattleGenerator, PC, Character_Class
+from adventure.models import UnlockStatus, AdventureInstance
+from maps.models import Map
 
-class HomePageView(TemplateView):
+class HQView(TemplateView):
 
-    template_name = "core/home.html"
+    template_name = "core/hq.html"
+    def get_maps(self):
+        user = self.request.user
+        cs = UnlockStatus.objects.get(Value="completed")
+        completed_levels = AdventureInstance.objects.filter(Player=user,State=cs).count()
+        unlocked_maps = Map.objects.filter(UnlockAmount__lte=completed_levels)
+        return unlocked_maps
+    
 
 class SetupView(TemplateView):
     template_name = "core/setup.html"

@@ -1,6 +1,6 @@
 {% extends 'dh5bp/base.html' %}
 {% load staticfiles %}
-{% block title %}Chrononaut Adventures{% endblock %}
+{% block title %}Chrononaut Adventures in {{object}}{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="{% static "css/main.css" %}">
 <link rel="stylesheet" href="{% static "css/leaflet.css" %}">
@@ -15,10 +15,10 @@
 
     <script>
       var map = L.map('map').setView([-77, -66], 2);
-        L.tileLayer('{% static "maps/imgs/1600_map"%}/{z}/{x}/{y}.png', {
+        L.tileLayer('{% static "maps/imgs/"%}{{object.Filename}}/{z}/{x}/{y}.png', {
             minZoom: 2,
             maxZoom: 4,
-            attribution: 'by anonymous Portuguese (1502) - Biblioteca Estense Universitaria, Modena, Italy',
+            attribution: '{{object.Attribution}}',
             tms: true
       }).addTo(map);
 
